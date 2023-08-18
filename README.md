@@ -45,6 +45,36 @@ school = School(school_code="school_1", school_name="School 1")
 school = School(school_code="scho", school_name="School 1") # ValueError: 'scho' does not match regex pattern '^school.*$'
 ```
 
+- `PrefixStr`: Validate string attributes with a prefix.
+
+- `SuffixStr`: Validate string attributes with a suffix.
+
+- `ContainsStr`: Validate string attributes with a substring.
+
+- `EmailStr`: Validate string attributes with an email pattern.
+
+#### TBD
+
+- `NotContainsStr`: Validate string attributes with a not contains pattern.
+
+- `LengthStr`: Validate string attributes with a length pattern.
+
+- `NumericStr`: Validate string attributes with a numeric pattern.
+
+- `AlphabeticalStr`: Validate string attributes with an alphabetical pattern.
+
+- `AlphanumericStr`: Validate string attributes with an alphanumeric pattern.
+
+- `UrlStr`: Validate string attributes with a url pattern.
+
+- `PhoneStr`: Validate string attributes with a phone pattern.
+
+- `CreditCardStr`: Validate string attributes with a credit card pattern.
+
+- `LowercaseStr`: Validate string attributes with a lowercase pattern.
+
+- `UppercaseStr`: Validate string attributes with an uppercase pattern.
+
 ### Numeric
 
 - `RangeInt`: Set boundaries for integer attributes.
@@ -96,6 +126,18 @@ transaction = Transaction(amount=Decimal("150.75"), amount2=Decimal("5.0"))
 transaction = Transaction(amount=Decimal("0.005"), amount2=Decimal("5.0")) # ValueError: 0.005 is not in range [0.01, 1000.00]
 transaction = Transaction(amount=Decimal("150.75"), amount2=Decimal("15")) # ValueError: 15 is not in range [1, 10]
 ```
+
+#### TBD
+
+- `Positive*`: Validate integer | float | Decimal attributes with a positive pattern.
+
+- `Negative*`: Validate integer | float | Decimal attributes with a negative pattern.
+
+- `Odd*`: Validate integer | float | Decimal attributes with an odd pattern.
+
+- `Even*`: Validate integer | float | Decimal attributes with an even pattern.
+
+- `Divisible*`: Validate integer | float | Decimal attributes with a divisible pattern.
 
 ### ETC
 

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any, Generic, TypeVar, cast
+from typing import Any, Generic, Literal, TypeVar, cast
 
 from typing_extensions import get_args
 
@@ -33,3 +33,8 @@ class RegexStrType(str, Generic[T]):
 
 PATTERN = TypeVar("PATTERN", bound=str)
 RegexStr = RegexStrType[PATTERN] | str
+
+
+EmailStr = (
+    RegexStrType[Literal["^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"]] | str
+)
