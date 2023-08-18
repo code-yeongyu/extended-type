@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "extended-type"
+version = "0.1.0"
+description = ""
+authors = ["YeonGyu-Kim <code.yeon.gyu@gmail.com>"]
+packages = [{ include = "extended_type" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typing-extensions = "^4.7.1"
+pydantic = "1.10.9"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.285"
+black = "^23.7.0"
+mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
