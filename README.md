@@ -1,14 +1,20 @@
 # extended-type
 
-Boost Python's type hinting with extended-types: regex and range validations seamlessly integrated with Pydantic.
+Boost Python's type hinting with extended-types: regex and range validations seamlessly.
 
 This is an experimental collection of code snippets that work as intended, but it's not packaged for distribution yet.
 
 ```python
+from dataclasses import dataclass
 from typing import Literal
-from extended_type import RegexStr, Validatable
 
-class School(Validatable):
+from extended_type import RangeInt, RegexStr
+from extended_type.type_extended import type_extended
+
+
+@type_extended
+@dataclass
+class School:
     school_code: RegexStr[Literal["^school.*$"]]
     school_name: str
     age: RangeInt[Literal[10], Literal[20]]
@@ -27,9 +33,11 @@ school.school_code = "sch" # ValueError: 'sch' does not match regex pattern '^sc
 
 ```python
 from typing import Literal
-from extended_type import RegexStr, Validatable
+from extended_type import RegexStr, TypeExtended
+from dataclasses import dataclass
 
-class School(Validatable):
+@dataclass
+class School(TypeExtended):
     school_code: RegexStr[Literal["^school.*$"]]
     school_name: str
 
@@ -43,9 +51,11 @@ school = School(school_code="scho", school_name="School 1") # ValueError: 'scho'
 
 ```python
 from typing import Literal
-from extended_type.range_int import RangeInt, Validatable
+from extended_type.range_int import RangeInt, TypeExtended
+from dataclasses import dataclass
 
-class Student(Validatable):
+@dataclass
+class Student(TypeExtended):
     age: RangeInt[Literal[10], Literal[20]]
 
 student = Student(age=15)
@@ -57,9 +67,11 @@ student = Student(age=21) # ValueError: 21 is not in range [10, 20]
 
 ```python
 from typing import Literal
-from extended_type.range_float import RangeFloat, Validatable
+from extended_type.range_float import RangeFloat, TypeExtended
+from dataclasses import dataclass
 
-class Product(Validatable):
+@dataclass
+class Product(TypeExtended):
     weight: RangeFloat[Literal['0.5'], Literal['5.0']]
     height: RangeFloat[Literal[1], Literal[5]]
 
@@ -72,9 +84,11 @@ product = Product(weight=2.5, height=7) # ValueError: 7 is not in range [1.0, 5.
 
 ```python
 from typing import Literal
-from extended_type.range_decimal import RangeDecimal, Validatable
+from extended_type.range_decimal import RangeDecimal, TypeExtended
+from dataclasses import dataclass
 
-class Transaction(Validatable):
+@dataclass
+class Transaction(TypeExtended):
     amount: RangeDecimal[Literal["0.01"], Literal["1000.00"]]
     amount2: RangeDecimal[Literal[1], Literal[10]]
 
